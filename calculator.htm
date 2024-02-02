@@ -191,16 +191,20 @@ function calculateModifiedPointValue() {
     modifiedPointValue += (willpower - 7) * 0.25;
 
     // Apply modifier based on modified point value range
-    if (modifiedPointValue >= 11 && modifiedPointValue <= 15) {
-        modifiedPointValue *= 1.5;
-    } else if (modifiedPointValue >= 16 && modifiedPointValue <= 20) {
-        modifiedPointValue *= 2;
-    } else if (modifiedPointValue >= 21 && modifiedPointValue <= 30) {
-        modifiedPointValue *= 3;
-    } else if (modifiedPointValue >= 31 && modifiedPointValue <= 40) {
-        modifiedPointValue *= 4;
-    } else if (modifiedPointValue >= 41 && modifiedPointValue <= 50) {
-        modifiedPointValue *= 5;
+    if (modifiedPointValue > 10) {
+        if (modifiedPointValue >= 11 && modifiedPointValue <= 15) {
+            modifiedPointValue *= 1.5;
+        } else if (modifiedPointValue >= 16 && modifiedPointValue <= 20) {
+            modifiedPointValue *= 2;
+        } else if (modifiedPointValue >= 21 && modifiedPointValue <= 30) {
+            modifiedPointValue *= 3;
+        } else if (modifiedPointValue >= 31 && modifiedPointValue <= 40) {
+            modifiedPointValue *= 4;
+        } else if (modifiedPointValue >= 41 && modifiedPointValue <= 50) {
+            modifiedPointValue *= 5;
+        }
+        // Round up the modified point value to the nearest integer
+        modifiedPointValue = Math.ceil(modifiedPointValue);
     }
 
     // Add point values based on checked items
@@ -210,11 +214,9 @@ function calculateModifiedPointValue() {
     });
 
     // Update the display with the modified point value
-    document.getElementById('modified-point-value').textContent = Math.ceil(modifiedPointValue);
+    document.getElementById('modified-point-value').textContent = modifiedPointValue;
 }
 
 </script>
 </body>
 </html>
-
-	
