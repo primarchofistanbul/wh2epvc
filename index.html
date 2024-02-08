@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Warhammer Fantasy Battles Point Value Calculator</title>
+</head>
+<body>
+<h1>Warhammer Fantasy Battles (2nd Edition) Point Value Calculator</h1>
+
+<!-- Input fields for all characteristics -->
+<div class="calculator">
+    <label for="move">Move (M): </label>
+    <input type="number" id="move-value" value="4" min="0" onchange="calculateModifiedPointValue()">
+</div>
+
+<!-- Repeat the above structure for the remaining characteristics -->
+<div class="calculator">
+    <label for="weapon_skill">Weapon Skill (Ws): </label>
+    <input type="number" id="ws-value" value="3" min="1" max="10" onchange="calculateModifiedPointValue()">
+</div>
+
+<div class="calculator">
+    <label for="bow_skill">Bow Skill (Bs): </label>
+    <input type="number" id="bs-value" value="3" min="1" max="10" onchange="calculateModifiedPointValue()">
+</div>
+
+<div class="calculator">
+    <label for="strength">Strength (S): </label>
+    <input type="number" id="strength-value" value="3" min="1" max="10" onchange="calculateModifiedPointValue()">
+</div>
+
+<div class="calculator">
+    <label for="toughness">Toughness (T): </label>
+    <input type="number" id="toughness-value" value="3" min="1" max="10" onchange="calculateModifiedPointValue()">
+</div>
+
+<div class="calculator">
+    <label for="wounds">Wounds (W): </label>
+    <input type="number" id="wounds-value" value="1" min="0" onchange="calculateModifiedPointValue()">
+</div>
+
+<div class="calculator">
+    <label for="initiative">Initiative (I): </label>
+    <input type="number" id="initiative-value" value="3" min="1" max="10" onchange="calculateModifiedPointValue()">
+</div>
+
+<div class="calculator">
+    <label for="attack">Attack (A): </label>
+    <input type="number" id="attack-value" value="1" min="0" onchange="calculateModifiedPointValue()">
+</div>
+
+<div class="calculator">
+    <label for="leadership">Leadership (Ld): </label>
+    <input type="number" id="leadership-value" value="7" min="1" max="10" onchange="calculateModifiedPointValue()">
+</div>
+
+<div class="calculator">
+    <label for="intelligence">Intelligence (Int): </label>
+    <input type="number" id="intelligence-value" value="7" min="1" max="10" onchange="calculateModifiedPointValue()">
+</div>
+
+<div class="calculator">
+    <label for="cool">Cool (Cl): </label>
+    <input type="number" id="cool-value" value="7" min="1" max="10" onchange="calculateModifiedPointValue()">
+</div>
+
+<div class="calculator">
+    <label for="willpower">Willpower (Wp): </label>
+    <input type="number" id="willpower-value" value="7" min="1" max="10" onchange="calculateModifiedPointValue()">
+</div>
+
+<!-- Display the modified point value -->
+<h2>Modified Point Value (PV): <span id="modified-point-value">5.00</span></h2>
+
+<!-- List of items with checkboxes -->
+<h3>Items</h3>
+
+<h4>Weapons, melee</h4>
+<!-- Weapons, Melee -->
+<div class="item">
+    <input type="checkbox" id="sword-mace" value="0.5" onchange="calculateModifiedPointValue()"> <label for="sword-mace">Sword, mace, or other additional hand weapon (+0.5)</label>
+</div>
+<div class="item">
+    <input type="checkbox" id="spear-lance" value="0.5" onchange="calculateModifiedPointValue()"> <label for="spear-lance">Spear or lance (+0.5)</label>
+</div>
+<div class="item">
+    <input type="checkbox" id="pike-two-handed" value="1" onchange="calculateModifiedPointValue()"> <label for="pike-two-handed">Pike or two-handed cutting or crushing weapon (+1)</label>
+</div>
+<div class="item">
+	<input type="checkbox" id="net" value="1" onchange="calculateModifiedPointValue()"> <label for="net">Net (+1)</label
+</div>
+<div>
+	<input type="checkbox" id="ball-and-chain" value="5" onchange="calculateModifiedPointValue()"> <label for="ball-and-chain">Ball and chain (+5)</label>
+</div class="item">
+<!-- Add checkboxes for other items (Weapons, Missile, Armour, Other, Mounts) -->
+
+<!-- Weapons, missile -->
+<h4>Weapons, missile</h4>
+<div class="item">
+	<input type="checkbox" id="short-bow" value="0.5" onchange="calculateModifiedPointValue()"> <label for="short-bow">Short bow (+0.5)</label>
+</div>
+<div class="item">
+	<input type="checkbox" id="normal-bow" value="1" onchange="calculateModifiedPointValue()"> <label for="normal-bow">Normal bow (+1)</label>
+</div>
+<div class="item">
+	<input type="checkbox" id="long-bow" value="1.5" onchange="calculateModifiedPointValue()"> <label for="long-bow">Long bow (+1.5)</label>
+</div>
+<div class="item">
+	<input type="checkbox" id="elf-bow" value="2.5" onchange="calculateModifiedPointValue()"> <label for="elf-bow">Elf bow (+2.5)</label>
+</div>
+<div class="item">
+	<input type="checkbox" id="crossbow" value="2" onchange="calculateModifiedPointValue()"> <label for="crossbow">Crossbow (+2)</label>
+</div>
+<div class="item">
+	<input type="checkbox" id="repeating-crossbow" value="2" onchange="calculateModifiedPointValue()"> <label for="repeating-crossbow">Repeating crossbow (+2)</label>
+</div>
+<div class="item">
+	<input type="checkbox" id="blow-pipe" value="0.5" onchange="calculateModifiedPointValue()"> <label for="blow-pipe">Blow pipe (+0.5)</label>
+</div>
+<div class="item">
+	<input type="checkbox" id="sling" value="0.5" onchange="calculateModifiedPointValue()"> <label for="sling">Sling (+0.5)</label>
+</div>
+<div class="item">
+	<input type="checkbox" id="throwing-weapons" value="0.5" onchange="calculateModifiedPointValue()"> <label for="throwing-weapons">Throwing weapons, javelins, knives, axes, spears, or darts (+0.5)</label>
+</div>
+
+<!-- Armour -->
+<h4>Armour</h4>
+<div class="item">
+	<input type="checkbox" id="shield" value="0.5" onchange="calculateModifiedPointValue()"> <label for="shield">Shield (+0.5)</label>
+<div>
+<div class="item">
+	<input type="checkbox" id="chainmail-or-breastplate" value="1" onchange="calculateModifiedPointValue()"> <label for="chainmail-or-breastplate">Chainmail armour/metal breastplate (+1)</label>
+<div>
+<div class="item">
+	<input type="checkbox" id="full-plate" value="1.5" onchange="calculateModifiedPointValue()"> <label for="full-plate">Full plate armour (+1.5)</label>
+<div>
+<div class="item">
+	<input type="checkbox" id="barding" value="1" onchange="calculateModifiedPointValue()"> <label for="barding">Barding / armour for any riding animal (+1)</label>
+<div>
+
+<!-- Other -->
+<h4>Other</h4>
+<div class="item">
+	<input type="checkbox" id="poison-weapon" value="2" onchange="calculateModifiedPointValue()"> <label for="poison-weapon">Extra for poison weapon (+2)</label>
+</div>
+
+<!-- Mounts -->
+<h4>Mounts</h4>
+<div class="item">
+	<input type="checkbox" id="horse-basic" value="6" onchange="calculateModifiedPointValue()"> <label for="horse-basic">Horse, basic (+6)</label>
+</div>
+<div class="item">
+	<input type="checkbox" id="horse-champion" value="11" onchange="calculateModifiedPointValue()"> <label for="horse-champion">Horse, for champion/minor hero (+11)</label>
+</div>
+<div class="item">
+	<input type="checkbox" id="horse-character" value="21" onchange="calculateModifiedPointValue()"> <label for="horse-character">Horse, for other character (+21)</label>
+</div>
+
+<script>
+function calculateModifiedPointValue() {
+    // Characteristic values
+    const move = parseFloat(document.getElementById('move-value').value) || 4;
+    const ws = parseFloat(document.getElementById('ws-value').value) || 3;
+    const bs = parseFloat(document.getElementById('bs-value').value) || 3;
+    const strength = parseFloat(document.getElementById('strength-value').value) || 3;
+    const toughness = parseFloat(document.getElementById('toughness-value').value) || 3;
+    const wounds = parseFloat(document.getElementById('wounds-value').value) || 1;
+    const initiative = parseFloat(document.getElementById('initiative-value').value) || 3;
+    const attack = parseFloat(document.getElementById('attack-value').value) || 1;
+    const leadership = parseFloat(document.getElementById('leadership-value').value) || 7;
+    const intelligence = parseFloat(document.getElementById('intelligence-value').value) || 7;
+    const cool = parseFloat(document.getElementById('cool-value').value) || 7;
+    const willpower = parseFloat(document.getElementById('willpower-value').value) || 7;
+
+    // Calculate modified point value based on characteristics
+    let modifiedPointValue = 5;
+
+    modifiedPointValue += (move - 4) * 0.25;
+    modifiedPointValue += (ws - 3) * 0.5;
+    modifiedPointValue += (bs - 3) * 0.25;
+    modifiedPointValue += (strength - 3) * 1;
+    modifiedPointValue += (toughness - 3) * 1;
+    modifiedPointValue += (wounds - 1) * 4;
+    modifiedPointValue += (initiative - 3) * 0.25;
+    modifiedPointValue += (attack - 1) * 4;
+    modifiedPointValue += (leadership - 7) * 0.25;
+    modifiedPointValue += (intelligence - 7) * 0.25;
+    modifiedPointValue += (cool - 7) * 0.25;
+    modifiedPointValue += (willpower - 7) * 0.25;
+
+    // Apply modifier based on modified point value range
+    if (modifiedPointValue > 10) {
+        if (modifiedPointValue >= 11 && modifiedPointValue <= 15) {
+            modifiedPointValue *= 1.5;
+        } else if (modifiedPointValue >= 16 && modifiedPointValue <= 20) {
+            modifiedPointValue *= 2;
+        } else if (modifiedPointValue >= 21 && modifiedPointValue <= 30) {
+            modifiedPointValue *= 3;
+        } else if (modifiedPointValue >= 31 && modifiedPointValue <= 40) {
+            modifiedPointValue *= 4;
+        } else if (modifiedPointValue >= 41 && modifiedPointValue <= 50) {
+            modifiedPointValue *= 5;
+        }
+        // Round up the modified point value to the nearest integer
+        modifiedPointValue = Math.ceil(modifiedPointValue);
+    }
+
+    // Add point values based on checked items
+    const items = document.querySelectorAll('.item input[type="checkbox"]:checked');
+    items.forEach(item => {
+        modifiedPointValue += parseFloat(item.value);
+    });
+
+    // Update the display with the modified point value
+    document.getElementById('modified-point-value').textContent = modifiedPointValue;
+}
+
+</script>
+</body>
+</html>
+
+	
