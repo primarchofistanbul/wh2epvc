@@ -16,3 +16,4 @@ Most values (such as Bow Skill, Weapon skill) are capped at 10 --though the rule
 
 ## How to install and use
 Download the calculator.htm and run it on your favourite browser.
+Or, just try it on https://primarchofistanbul.github.io/wh2epvc/
